@@ -1,5 +1,4 @@
-// https://adventofcode.com/2024/day/1/input
-const input = `12823   12823
+12823   12823
 74540   88907
 37687   50218
 83750   57255
@@ -998,25 +997,4 @@ const input = `12823   12823
 91448   59613
 60833   44098
 48061   21816
-31899   33989`;
-
-const by_least = (a, b) => a - b;
-const by_greatest = (a, b) => b - a;
-const niave_zip = (...arrays) =>
-	arrays[0].map((_, i) =>
-		arrays.map(array => array[i]));
-
-const dataset = input
-	.split('\n')
-	.map(x => x.split(/\s+/));
-
-const result = niave_zip(
-	dataset.map(x => x[0]).sort(by_least),
-	dataset.map(x => x[1]).sort(by_least)
-).reduce((total_difference, item) => {
-	let [lhv, rhv] = item.sort(by_greatest);
-	return total_difference + (lhv - rhv);
-}, 0);
-
-console.log(result)
-
+31899   33989
