@@ -25,8 +25,7 @@ console.log("Total Location ID difference: ", result)
 // PART 2
 const repeats = new Map();
 
-for (const item of dataset) {
-	const [, right] = item;
+for (const [, right] of dataset) {
 	repeats.set(right, (repeats.get(right) ?? 0) + 1);
 }
 
