@@ -50,7 +50,47 @@ function get_x_locations(input) {
 
 	return count;
 }
-
 const result = get_x_locations(dataset);
 
 console.log(result);
+
+function get_x_mas_count(input, i, j) {
+	let count = 0;
+
+	if (input[i - 1]?.[j - 1] === "M" && input[i - 1]?.[j + 1] === "M" && input[i + 1]?.[j - 1] === "S" && input[i + 1]?.[j + 1] === "S") {
+		count++;
+	}
+
+	if (input[i - 1]?.[j + 1] === "M" && input[i + 1]?.[j + 1] === "M" && input[i + 1]?.[j - 1] === "S" && input[i - 1]?.[j - 1] === "S") {
+		count++;
+	}
+
+	if (input[i + 1]?.[j + 1] === "M" && input[i + 1]?.[j - 1] === "M" && input[i - 1]?.[j - 1] === "S" && input[i - 1]?.[j + 1] === "S") {
+		count++;
+	}
+
+	if (input[i + 1]?.[j - 1] === "M" && input[i - 1]?.[j - 1] === "M" && input[i - 1]?.[j + 1] === "S" && input[i + 1]?.[j + 1] === "S") {
+		count++;
+	}
+
+	return count;
+}
+
+// part 2
+function get_a_locations(input) {
+	let count = 0;
+
+	for (const [i, row] of input.entries()) {
+		for (const [j, char] of row.entries()) {
+			if (char === "A") {
+				count += get_x_mas_count(input, i, j);
+			}
+		}
+	}
+
+	return count;
+}
+
+const result2 = get_a_locations(dataset);
+
+console.log(result2);
